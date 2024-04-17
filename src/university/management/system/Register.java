@@ -25,19 +25,19 @@ public class Register extends JFrame implements ActionListener{
         add(heading);
 
         JLabel lblusername = new JLabel("Username");
-        lblusername.setBounds(40, 90, 100, 20);
+        lblusername.setBounds(70, 90, 100, 20);
         add(lblusername);
 
         tfusername = new JTextField();
-        tfusername.setBounds(170, 90, 150, 20);
+        tfusername.setBounds(200, 90, 150, 20);
         add(tfusername);
 
         JLabel lblpassword = new JLabel("Password");
-        lblpassword.setBounds(40, 140, 100, 20);
+        lblpassword.setBounds(70, 140, 100, 20);
         add(lblpassword);
 
         tfpassword = new JPasswordField();
-        tfpassword.setBounds(170, 140, 150, 20);
+        tfpassword.setBounds(200, 140, 150, 20);
         add(tfpassword);
 
         register = new JButton("Register");
@@ -48,7 +48,7 @@ public class Register extends JFrame implements ActionListener{
         register.setFont(new Font("Tahoma", Font.BOLD, 16));
         add(register);
 
-        login = new JButton("Login");
+        login = new JButton("Cancel");
         login.setBounds(260, 200, 120, 30);
         login.setBackground(Color.BLACK);
         login.setForeground(Color.white);
@@ -78,6 +78,7 @@ public class Register extends JFrame implements ActionListener{
             }
 
         }else if(ae.getSource()== login){
+            setVisible(false);
             new Login();
     }
 }
