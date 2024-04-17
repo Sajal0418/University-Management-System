@@ -6,6 +6,25 @@ import java.sql.*;
 import net.proteanit.sql.DbUtils;
 import java.awt.event.*;
 
+
+interface DatabaseConnection {
+    ResultSet executeQuery(String query) throws SQLException;
+}
+
+// Implementation of the database connection interface using Conn class
+class ConnDatabaseConnection implements DatabaseConnection {
+    private Conn conn;
+
+    public ConnDatabaseConnection() {
+        this.conn = new Conn();
+    }
+
+    @Override
+    public ResultSet executeQuery(String query) throws SQLException {
+        return conn.s.executeQuery(query);
+    }
+}
+
 public class TeacherDetails extends JFrame implements ActionListener {
 
     Choice cEmpId;
