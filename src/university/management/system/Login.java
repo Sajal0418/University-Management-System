@@ -42,7 +42,7 @@ class LoginPrototype implements ClonableLogin {
 
 public class Login extends JFrame implements ActionListener {
 
-    JButton login, cancel;
+    JButton login, cancel,register;
     JTextField tfusername;
     JPasswordField tfpassword;
     ClonableLogin loginPrototype; // Reference to ClonableLogin
@@ -84,6 +84,14 @@ public class Login extends JFrame implements ActionListener {
         cancel.addActionListener(this);
         cancel.setFont(new Font("Tahoma", Font.BOLD, 16));
         add(cancel);
+
+        register = new JButton("Register");
+        register.setBounds(110, 200, 120, 30);
+        register.setBackground(Color.BLACK);
+        register.setForeground(Color.white);
+        register.addActionListener(this);
+        register.setFont(new Font("Tahoma", Font.BOLD, 16));
+        add(register);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/second.jpg"));
         Image i2 = i1.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
@@ -129,6 +137,9 @@ public class Login extends JFrame implements ActionListener {
             }
         } else if (ae.getSource() == cancel) {
             setVisible(false);
+        }else if(ae.getSource() == register){
+            setVisible(false);
+            new Register();
         }
     }
 
