@@ -5,7 +5,7 @@ import java.awt.*;
 import java.sql.*;
 import java.awt.event.*;
 
-public class StudentFeeForm extends JFrame implements ActionListener {
+public class StudentFeeForm extends JFrame implements ActionListener, Cloneable {
 
     private Choice crollno;
     private JComboBox<String> cbcourse, cbbranch, cbsemester;
@@ -199,6 +199,24 @@ public class StudentFeeForm extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new StudentFeeForm();
+        // Creating the original prototype object
+        StudentFeeForm original = new StudentFeeForm();
+        
+        // Cloning the prototype whenever a new instance is needed
+        StudentFeeForm cloned = original.clone();
+        
+        // Displaying the cloned form
+        cloned.setVisible(true);
+    }
+
+    // Implementing Cloneable interface
+    @Override
+    public StudentFeeForm clone() {
+        try {
+            return (StudentFeeForm) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
