@@ -64,24 +64,32 @@ public class Register extends JFrame implements ActionListener{
         if(ae.getSource()== register){
             String username = tfusername.getText();
             String password=tfpassword.getText();
-            try {
-                String query="insert into login values('"+username+"','"+password+"')";
-                Conn c=new Conn();
-                c.s.executeUpdate(query);
 
-                JOptionPane.showMessageDialog(null, "Registered Successfully");
-                setVisible(false);
-                new Login();
-            } catch (Exception e) {
-                // TODO: handle exception
-                e.printStackTrace();
+            if(username.isEmpty()||password.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please fill all the fields");
             }
-
+            else{
+                try {
+                    String query="insert into login values('"+username+"','"+password+"')";
+                    Conn c=new Conn();
+                    c.s.executeUpdate(query);
+    
+                    JOptionPane.showMessageDialog(null, "Registered Successfully");
+                    setVisible(false);
+                    new Login();
+                } catch (Exception e) {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
+    
+            }
+            
         }else if(ae.getSource()== login){
             setVisible(false);
             new Login();
     }
 }
+    
 
     public static void main(String[] args) {
         new Register();
