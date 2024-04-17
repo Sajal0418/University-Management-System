@@ -209,7 +209,6 @@ public class Project extends JFrame implements ActionListener {
             new About();
         } else if (msg.equals("Student Fee Form")) {
              new StudentFeeForm();
-            new StudentFeeForm();
         }
     }
 
