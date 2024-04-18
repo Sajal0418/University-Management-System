@@ -159,7 +159,7 @@ public class UpdateStudent extends JFrame implements ActionListener{
         add(tfbranch);
         
         try {
-            Conn c = new Conn();
+            Conn c = ConnManager.getInstance();
             String query = "select * from student where rollno='"+crollno.getSelectedItem()+"'";
             ResultSet rs = c.s.executeQuery(query);
             while(rs.next()) {
@@ -183,7 +183,7 @@ public class UpdateStudent extends JFrame implements ActionListener{
         crollno.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent ie) {
                 try {
-                    Conn c = new Conn();
+                    Conn c = ConnManager.getInstance();
                     String query = "select * from student where rollno='"+crollno.getSelectedItem()+"'";
                     ResultSet rs = c.s.executeQuery(query);
                     while(rs.next()) {
@@ -236,8 +236,8 @@ public class UpdateStudent extends JFrame implements ActionListener{
             
             try {
                 String query = "update student set address='"+address+"', phone='"+phone+"', email='"+email+"', course='"+course+"', branch='"+branch+"' where rollno='"+rollno+"'";
-                Conn con = new Conn();
-                con.s.executeUpdate(query);
+                Conn c = ConnManager.getInstance();
+                c.s.executeUpdate(query);
                 
                 JOptionPane.showMessageDialog(null, "Student Details Updated Successfully");
                 setVisible(false);

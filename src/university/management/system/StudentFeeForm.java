@@ -66,7 +66,7 @@ public class StudentFeeForm extends JFrame implements ActionListener, Cloneable 
         add(labelfname);
 
         try {
-            Conn c = new Conn();
+            Conn c = ConnManager.getInstance();
             String query = "select * from student where rollno='"+crollno.getSelectedItem()+"'";
             ResultSet rs = c.s.executeQuery(query);
             while(rs.next()) {
@@ -80,7 +80,7 @@ public class StudentFeeForm extends JFrame implements ActionListener, Cloneable 
         crollno.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent ie) {
                 try {
-                    Conn c = new Conn();
+                    Conn c = ConnManager.getInstance();
                     String query = "select * from student where rollno='"+crollno.getSelectedItem()+"'";
                     ResultSet rs = c.s.executeQuery(query);
                     while(rs.next()) {
