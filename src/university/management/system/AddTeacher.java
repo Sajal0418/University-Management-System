@@ -1,10 +1,15 @@
 package university.management.system;
+import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter.FilterBypass;
+
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
+import javax.swing.text.*;
 import java.awt.*;
-import java.util.*;
-import com.toedter.calendar.JDateChooser;
 import java.awt.event.*;
+import java.util.*;
 
 public class AddTeacher extends JFrame implements ActionListener{
     
@@ -119,6 +124,21 @@ public class AddTeacher extends JFrame implements ActionListener{
         tfaadhar = new JTextField();
         tfaadhar.setBounds(600, 350, 150, 30);
         add(tfaadhar);
+        
+        ((AbstractDocument) tfaadhar.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
+                    throws BadLocationException {
+                String currentText = fb.getDocument().getText(0, fb.getDocument().getLength());
+                currentText += text;
+                if (currentText.matches("\\d{0,12}")) { // Allows only up to 12 digits
+                    super.replace(fb, offset, length, text, attrs);
+                } else {
+                    // Reject the input if it exceeds 12 digits
+                    JOptionPane.showMessageDialog(null, "Aadhar number must be 12 digits long");
+                }
+            }
+        });
         
         JLabel lblcourse = new JLabel("Qualification");
         lblcourse.setBounds(50, 400, 200, 30);

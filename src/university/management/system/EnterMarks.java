@@ -191,7 +191,6 @@ public class EnterMarks extends JFrame implements ActionListener {
                                     .setRollNoChoice(new Choice())
                                     .setSemesterComboBox(new JComboBox())
                                     .setSubject1TextField(new JTextField())
-                                    // Set other components as needed
                                     .build();
 
         // Making the EnterMarks frame visible
